@@ -1,0 +1,42 @@
+<ion-view view-title="Mapa">
+
+  <ion-content class="padding" >
+    <!--<div class="list card">
+      <div class="item item-divider">Mapas</div>
+      <div class="item item-body">
+        <div>
+
+        </div>
+      </div>
+    </div>
+
+    <h1>{{geolocation}}</h1>-->
+
+    <div ng-show="!url_view" id="timer" class="bar bar-header bar-positive">
+      <h1 class="title htimer" style="font-size: 30px;" ><i class="icon ion-clock"></i>{{detailCounter}}</h1>
+    </div>
+
+    <div id="map_canvas">
+           <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
+
+                <ui-gmap-circle ng-repeat="c in circles track by c.id" center="c.center" stroke="c.stroke" fill="c.fill" radius="c.radius"
+                  visible="c.visible" geodesic="c.geodesic" editable="c.editable" draggable="c.draggable" clickable="c.clickable" control="c.control">
+                </ui-gmap-circle>
+                <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+                </ui-gmap-marker>
+           </ui-gmap-google-map>
+
+
+       </div>
+    </ion-content>
+    <ion-footer-bar ng-show="url_view" class="bar-dark">
+      <!-- href="#/tab/dash" -->
+      <a  ng-click="centerOnMe()" class="button button-icon icon ion-navigate">Check In</a>
+    </ion-footer-bar>
+    <ion-footer-bar ng-show="!url_view" class="bar-dark">
+      <!-- href="#/tab/dash" -->
+      <a  ng-click="checkout()" class="button button-icon icon ion-navigate" href="#/app/details">Check Out</a>
+    </ion-footer-bar>
+
+
+</ion-view>
